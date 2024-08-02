@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import backgroundImage from '../assets/bgg.jpg';
 
 const Registration = () => {
     const [username, setUsername] = useState('');
@@ -18,7 +19,7 @@ const Registration = () => {
         <div 
             className="flex items-center justify-center min-h-screen w-full"
             style={{ 
-                backgroundImage: 'url("https://tinyurl.com/a7nzyk7d")', 
+                backgroundImage: `url(${backgroundImage})`, 
                 backgroundSize: 'cover',
                 backgroundAttachment: 'fixed',
                 backgroundPosition: 'center',
