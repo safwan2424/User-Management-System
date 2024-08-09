@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Registration from './components/Registration';
 import UserTable from './components/UserTable';
 import UserForm from './components/UserForm';
+import EditUser from './components/EditUser';
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -57,12 +57,36 @@ export const update = async (req, res) => {
 };
 
 // Delete a user with the specified userId in the request
+// export const deleteUser = async (req, res) => {
+//     try {
+//         const user = await Userdb.findByIdAndRemove(req.params.id);
+//         if (!user) return res.status(404).send({ message: "User not found" });
+//         res.status(200).json({ message: "User deleted successfully!" });
+//     } catch (err) {
+//         res.status(500).send({ message: err.message || "Could not delete user" });
+//     }
+// };
+// In your controller file
+// export const deleteUser = async (req, res) => {
+//     try {
+//         const user = await Userdb.findByIdAndRemove(req.params.id);
+//         if (!user) return res.status(404).send({ message: "User not found" });
+//         res.status(200).json({ message: "User deleted successfully!" });
+//     } catch (err) {
+//         res.status(500).send({ message: err.message || "Could not delete user" });
+//     }
+// };
+
 export const deleteUser = async (req, res) => {
     try {
         const user = await Userdb.findByIdAndRemove(req.params.id);
-        if (!user) return res.status(404).send({ message: "User not found" });
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        }
         res.status(200).json({ message: "User deleted successfully!" });
     } catch (err) {
+        console.error(`Error deleting user: ${err.message}`);
         res.status(500).send({ message: err.message || "Could not delete user" });
     }
 };
+

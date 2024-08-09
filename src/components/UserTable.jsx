@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getUsers, deleteUser } from '/server/services/api'; 
 import UserRow from './UserRow';
 
-const UserTable = ({ setEditing, setUserId, onAddUser, refreshList }) => {
+const UserTable = ({ setEditing, onAddUser, refreshList }) => {
     const [users, setUsers] = useState([]);
 
     // Load users whenever refreshList changes
@@ -13,8 +13,8 @@ const UserTable = ({ setEditing, setUserId, onAddUser, refreshList }) => {
     const loadUsers = async () => {
         try {
             const response = await getUsers();
-            console.log('Fetched users:', response.data); 
-            setUsers(response.data || []);
+            console.log('Fetched users:', response); 
+            setUsers(response || []);
         } catch (error) {
             console.error("Error loading users:", error);
         }
@@ -55,7 +55,7 @@ const UserTable = ({ setEditing, setUserId, onAddUser, refreshList }) => {
                             <UserRow
                                 key={user._id}
                                 user={user}
-                                onEdit={() => { setUserId(user._id); setEditing(true); }}
+                                onEdit={() => setEditing(true)}
                                 onDelete={() => handleDelete(user._id)}
                             />
                         ))
