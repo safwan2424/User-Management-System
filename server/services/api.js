@@ -27,6 +27,3 @@ export const deleteUser = async (id) => {
         throw error;
     }
 };
-// export const deleteUser = (id) => fetch(`${API_URL}/${id}`, {
-//     method: 'DELETE'
-// }).then(res => res.json());
