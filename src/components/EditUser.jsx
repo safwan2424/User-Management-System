@@ -20,25 +20,42 @@ const EditUser = ({ userId, setEditing }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
             <input
                 type="text"
                 value={user.name}
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
+                className="block w-full p-2 border border-gray-300 rounded-md"
             />
             <input
                 type="email"
                 value={user.email}
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
+                className="block w-full p-2 border border-gray-300 rounded-md"
             />
             <textarea
                 value={user.bio}
                 onChange={(e) => setUser({ ...user, bio: e.target.value })}
+                className="block w-full p-2 border border-gray-300 rounded-md"
             />
-            <button type="submit">Save</button>
-            <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+            <div className="flex space-x-4">
+                <button 
+                    type="submit" 
+                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                >
+                    Save
+                </button>
+                <button 
+                    type="button" 
+                    onClick={() => setEditing(false)} 
+                    className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
+                >
+                    Cancel
+                </button>
+            </div>
         </form>
     );
 };
 
 export default EditUser;
+

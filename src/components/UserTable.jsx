@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getUsers, deleteUser } from '/server/services/api'; 
 import UserRow from './UserRow';
 
-const UserTable = ({ setEditing, onAddUser, refreshList }) => {
+const UserTable = ({ setEditing, onAddUser, onEditUser, refreshList }) => {
     const [users, setUsers] = useState([]);
 
-    // Load users whenever refreshList changes
     useEffect(() => {
         loadUsers();
     }, [refreshList]);
@@ -55,7 +54,7 @@ const UserTable = ({ setEditing, onAddUser, refreshList }) => {
                             <UserRow
                                 key={user._id}
                                 user={user}
-                                onEdit={() => setEditing(true)}
+                                onEdit={() => onEditUser(user._id)} // Trigger edit with user ID
                                 onDelete={() => handleDelete(user._id)}
                             />
                         ))
@@ -71,3 +70,4 @@ const UserTable = ({ setEditing, onAddUser, refreshList }) => {
 };
 
 export default UserTable;
+
